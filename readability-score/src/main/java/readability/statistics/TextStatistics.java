@@ -12,7 +12,7 @@ public class TextStatistics {
     }
 
     public double getReadabilityIndex() {
-        return 0d;
+        return 4.71 * ((double) characters / words) + 0.5 * ((double) words / sentences) - 21.43;
     }
 
     public int getCharacters() {
