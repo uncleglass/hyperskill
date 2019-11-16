@@ -12,7 +12,8 @@ public class ReadabilityIndexUtil {
     }
 
     public static String getApproximateAge(final double score) {
-        switch ((int) score) {
+        int round = (int) Math.round(score);
+        switch (round) {
             case 1:
                 return "5-6";
             case 2:
