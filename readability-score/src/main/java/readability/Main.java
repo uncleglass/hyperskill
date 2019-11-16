@@ -1,19 +1,20 @@
 package readability;
 
-import java.util.Scanner;
+import readability.statistics.TextStatistics;
+import readability.utils.file.ReaderUtil;
+
+import static readability.utils.parser.ParserUtil.parseToStatistics;
+import static readability.utils.userinterface.MessagePreparatorUtil.prepareMessageForText;
+import static readability.utils.userinterface.MessagePreparatorUtil.prepareMessageForTextStatistics;
+import static readability.utils.userinterface.UserInterfaceUtil.print;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine();
-        String[] sentences = line.split("[.!?]");
-        double wordsCounter = 0;
-        for (String sentence : sentences) {
-            String[] words = sentence.trim().split(" ");
-            wordsCounter += words.length;
+        if (args.length > 0) {
+                String text = ReaderUtil.readFile(args[0]);
+                print(prepareMessageForText(text));
+                TextStatistics textStatistics = parseToStatistics(text);
+                print(prepareMessageForTextStatistics(textStatistics));
         }
-        double averageWord = wordsCounter / sentences.length;
-
-        System.out.println(averageWord > 10.0 ? "HARD" : "EASY");
     }
 }
