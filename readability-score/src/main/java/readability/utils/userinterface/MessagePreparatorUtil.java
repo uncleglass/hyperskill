@@ -11,11 +11,13 @@ public class MessagePreparatorUtil {
         return "Words: " + textStatistics.getWords() +
                 "\nSentences: " + textStatistics.getSentences() +
                 "\nCharacters: " + textStatistics.getCharacters() +
-                "\nThe score is: " + String.format("%.2f", textStatistics.getReadabilityIndex())+
+                "\nThe score is: " + String.format("%.2f", textStatistics.getReadabilityIndex()) +
                 "\nThis text should be understood by " +
-                ReadabilityIndexUtil.getApproximateAge(textStatistics.getReadabilityIndex())+
+                ReadabilityIndexUtil.getApproximateAge(textStatistics.getReadabilityIndex()) +
                 " year olds.";
     }
 
-
+    public static String prepareMessageForText(final String text) {
+        return "The text is:\n" + text + "\n";
+    }
 }
