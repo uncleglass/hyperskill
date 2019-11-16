@@ -1,5 +1,7 @@
 package readability.statistics;
 
+import readability.utils.index.ReadabilityIndexUtil;
+
 public class TextStatistics {
     private final int characters;
     private final int words;
@@ -12,7 +14,7 @@ public class TextStatistics {
     }
 
     public double getReadabilityIndex() {
-        return 4.71 * ((double) characters / words) + 0.5 * ((double) words / sentences) - 21.43;
+        return ReadabilityIndexUtil.countReadabilityIndex(this);
     }
 
     public int getCharacters() {
